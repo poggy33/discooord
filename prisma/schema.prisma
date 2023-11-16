@@ -131,8 +131,9 @@ model Conversation {
 
   directMessages DirectMessage[]
 
-  @@unique([memberOneId, memberTwoId])
   @@index([memberTwoId])
+
+  @@unique([memberOneId, memberTwoId])
 }
 
 model DirectMessage {
@@ -151,6 +152,6 @@ model DirectMessage {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([memberId])
+  @@index([memberId])
   @@index([conversationId])
 }
